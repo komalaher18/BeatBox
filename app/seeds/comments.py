@@ -1,20 +1,23 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, Comment, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_users():
-    demo = User(
-        firstname='Demo', lastname='lition', username='Demo', email='demo@aa.io', password='password', profile_url='image1.url')
-    marnie = User(
-        firstname='Marnie', lastname='Leo', username='marnie', email='marnie@aa.io', password='password', profile_url='image2.url')
-    bobbie = User(
-        firstname='Bobbie', lastname='Jean', username='bobbie', email='bobbie@aa.io', password='password', profile_url='image3.url')
+def seed_comments():
+    comment1 = Comment(
+        commentBody="This song is pure magic!", userId=2, songId=1)
+    comment2 = Comment(
+        commentBody="This song hits me right in the feels.", userId=3, songId=2)
+    comment3 = Comment(
+        commentBody="Adding this to my playlist ASAP!", userId=1, songId=3)
+    comment4 = Comment(
+        commentBody="Instant mood booster!", userId=1, songId=2)
 
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(comment1)
+    db.session.add(comment2)
+    db.session.add(comment3)
+    db.session.add(comment4)
     db.session.commit()
 
 
@@ -24,10 +27,10 @@ def seed_users():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_users():
+def undo_comments():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM users"))
+        db.session.execute(text("DELETE FROM comments"))
 
     db.session.commit()
