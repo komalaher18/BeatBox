@@ -33,7 +33,7 @@ class Song(db.Model, UserMixin):
             'genre':self.genre,
             'songUrl': self.songUrl,
             'songImage':self.songImage,
-            'likes': self.likes,
+            # 'likes': self.likes,
             'userId': self.userId,
             # 'playlists': [playlist.to_dict() for playlist in self.playlists]
         }
