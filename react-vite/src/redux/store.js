@@ -6,10 +6,17 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
+import songsReducer from "./songs";
+import commentReducer from "./comments";
+// import likesReducer from "./likes";
 
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  songsReducer,
+  comments: commentReducer,
+  // likes: likesReducer
+
 
 });
 

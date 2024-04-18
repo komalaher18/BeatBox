@@ -1,0 +1,11 @@
+
+.genre-songs {
+    display: grid;
+    grid: auto / repeat(auto-fill, 210px);
+    grid-gap: 80px;
+    max-width: 1600px;
+}
+.genre-container {
+    padding: 10px 0;
+    /* border-bottom: 5px solid #f2f2f2; */
+}
