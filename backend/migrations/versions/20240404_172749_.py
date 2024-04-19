@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 89e44e6baf83
-Revises: 
+Revises:
 Create Date: 2024-04-04 17:27:49.195501
 
 """
@@ -50,7 +50,7 @@ def upgrade():
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('commentBody', sa.String(length=250), nullable=True),
+    sa.Column('comment', sa.String(length=250), nullable=True),
     sa.Column('songId', sa.Integer(), nullable=True),
     sa.Column('userId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['songId'], ['songs.id'], ),

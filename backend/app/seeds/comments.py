@@ -5,13 +5,13 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_comments():
     comment1 = Comment(
-        commentBody="This song is pure magic!", userId=2, songId=1)
+        comment="This song is pure magic!", userId=2, songId=1)
     comment2 = Comment(
-        commentBody="This song hits me right in the feels.", userId=3, songId=2)
+        comment="This song hits me right in the feels.", userId=3, songId=2)
     comment3 = Comment(
-        commentBody="Adding this to my playlist ASAP!", userId=1, songId=3)
+        comment="Adding this to my playlist ASAP!", userId=1, songId=3)
     comment4 = Comment(
-        commentBody="Instant mood booster!", userId=1, songId=2)
+        comment="Instant mood booster!", userId=1, songId=2)
 
 
     db.session.add(comment1)

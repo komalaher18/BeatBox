@@ -10,7 +10,7 @@ class Comment(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    commentBody = db.Column(db.String(250))
+    comment = db.Column(db.String(250))
     songId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("songs.id")))
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
@@ -20,7 +20,7 @@ class Comment(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'commentBody': self.comment,
+            'comment': self.comment,
             'songId': self.songId,
             'userId': self.userId,
         }

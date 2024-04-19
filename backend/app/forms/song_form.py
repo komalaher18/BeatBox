@@ -6,7 +6,7 @@ from app.api.awsS3 import ALLOWED_EXTENSIONS
 
 class SongForm(FlaskForm):
 
-    title = StringField("title", validators=[DataRequired(), Length(-1, 255, "Max Length for Title is 255 characters")])
+    title = StringField("title", validators=[DataRequired(), Length(1, 255, "Max Length for Title is 255 characters")])
     genre = StringField("genre", validators=[DataRequired()])
     # songUrl = StringField("songUrl", validators=[DataRequired()])
     songUrl = FileField("songUrl", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
