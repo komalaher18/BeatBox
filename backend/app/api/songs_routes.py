@@ -93,67 +93,23 @@ def new_song():
     return form.errors, 400
 
 
-#  Update a song :
-# @songs_routes.route("/<int:songId>", methods=["PUT"])
-# @login_required
-# def update_song(songId):
-
-        # song_to_be_updated= Song.query.get(songId)
-        # print("song_to_be_updated**********", song_to_be_updated)
-
-        # if not song_to_be_updated :
-        #         return {'error': 'Song not found'}
-        # if song_to_be_updated.userId != current_user.id:
-        #     return {'error': "Not Authorized"}
-
-        # form = SongForm()
-        # print(form.title, "form.title&&&&&&&&&&")
-        # form["csrf_token"].data = request.cookies["csrf_token"]
-        # print("::::::::::::;line146",form.validate_on_submit())
-
-        # if form.validate_on_submit():
-        #     song_to_be_updated.filename = get_unique_filename(song_to_be_updated.filename)
-        #     # print("song_to_be_updated.filename**********", song_to_be_updated.fileName)
-        #     uploadResult = upload_file_to_s3(song_to_be_updated)
-        #     if "url" not in uploadResult:
-        #         return {"error": "The upload was unsuccessful"}
-
-        #     old_song_url = song_to_be_updated.songUrl
-        #     remove_file_from_s3(old_song_url)
-        #     print("song_to_be_updated**********", song_to_be_updated)
-        #     song_to_be_updated.songUrl = uploadResult['url']
-
-        #     song_to_be_updated.title = form.data["title"]
-        #     song_to_be_updated.genre = form.data["genre"]
-        #     song_to_be_updated.songImage = form.data["songImage"]
-        #     song_to_be_updated.userId = current_user.id
-        #     db.session.commit()
-        #     return song_to_be_updated.to_dict()
-        # return form.errors, 400
 
 # latest
 @songs_routes.route("/<int:songId>", methods=["PUT"])
 @login_required
 def update_song(songId):
-    song_to_be_updated = Song.query.get(songId)
-    print("song_to_be_updated****", song_to_be_updated)
-    if not song_to_be_updated:
-        raise Exception("song can not be found")
+    try:
+        song_to_be_updated = Song.query.get(songId)
+        # print("song_to_be_updated****", song_to_be_updated)
+        if not song_to_be_updated:
+            raise Exception("song can not be found")
 
-    form = SongUpdateForm()
-    print("form.title***", form.data)
-    form["csrf_token"].data = request.cookies["csrf_token"]
-    print("((((((")
-    print("******form.validate", form.validate_on_submit())
-    if form.validate_on_submit():
-
-
-
-            # song_to_be_updated = Song.query.get(songId)
-            # print("song_to_be_updated****", song_to_be_updated)
-            # if not song_to_be_updated:
-            #     raise Exception("song can not be found")
-
+        form = SongUpdateForm()
+        # print("form.title***", form.data)
+        form["csrf_token"].data = request.cookies["csrf_token"]
+        # print("((((((")
+        print("******form.validate", form.validate_on_submit())
+        if form.validate_on_submit():
             if "songUrl" in request.files:
                 image = request.files["songUrl"]
                 if not allowed_file(image.filename):
@@ -165,7 +121,7 @@ def update_song(songId):
                 song_to_be_updated.songUrl = upload["url"]
 
             song_to_be_updated.title = form.data["title"]
-            print("$$$$$title", song_to_be_updated.title)
+            # print("$$$$$title", song_to_be_updated.title)
             song_to_be_updated.genre = form.data["genre"]
             song_to_be_updated.songImage = form.data["songImage"]
             song_to_be_updated.userId = current_user.id
@@ -174,7 +130,11 @@ def update_song(songId):
 
             db.session.commit()
             return song_to_be_updated.to_dict()
-    return form.errors, 400
+        else:
+            return jsonify({'error': 'Form validation failed'}), 400
+    except Exception as e:
+        msg = str(e)
+        return {"message": msg}
 
 
 

@@ -52,13 +52,18 @@ const UpdateSong = () => {
 
     const form_errors = {};
 
-    if (title && title.length < 1)
+    if (!title || title.trim().length === 0)
       form_errors.title = "Please include a title for  song";
 
     if (!genre) form_errors.genre = "Please select a genre";
+    if (!songImage) form_errors.songImage = "Please include a song cover image";
 
     if (songImage.length > 0 && !songImage.match(/\.(jpeg|jpg|gif|png)$/))
       form_errors.songImage = "Image URL must end in .png, .jpg, or .jpeg";
+
+    if (!songUrl)
+      form_errors.songUrl = "Please select an audio file for the song";
+
 
     if (Object.keys(form_errors).length > 0) {
       setErrors(form_errors);
@@ -75,22 +80,14 @@ const UpdateSong = () => {
 
     try {
       const result = await dispatch(UpdateSongsThunk(song.id, formData));
-      const formDataTitle = formData.get("title");
-      console.log("******formdata title:", formDataTitle);
-      console.log("******result", result);
-      if (result.ok) {
-        navigate("/");
-        //  navigate("/songs/current");
-      } else {
-        setErrors(result.data);
-        setLoading(false);
-        return result.data;
-      }
+
+      navigate("/songs/current/");
     } catch (error) {
-      console.error("An error occurred", error);
+      console.error("Error creating song:", error);
     }
     setLoading(false);
   };
+
 
   return (
     <form className="updateSong-container" onSubmit={handleSubmit}>
@@ -107,7 +104,7 @@ const UpdateSong = () => {
           id="title"
         />
       </div>
-      {errors.title && <p className="div-error">{errors.title}</p>}
+      {errors && errors.title && <p className="div-error">{errors.title}</p>}
 
       <div className="input-div">
         <label className="labels-div" htmlFor="genre">
@@ -124,9 +121,10 @@ const UpdateSong = () => {
           <option value={POP}>Pop</option>
           <option value={EDM}>EDM</option>
           <option value={ROCK}>Rock</option>
+
         </select>
       </div>
-      {errors.genre && <p className="div-error">{errors.genre}</p>}
+      {errors && errors.genre && <p className="div-error">{errors.genre}</p>}
 
       <div className="div-input">
         <label className="label-div" htmlFor="image">
@@ -141,7 +139,9 @@ const UpdateSong = () => {
           id="image"
         />
       </div>
-      {errors.songImage && <p className="div-error">{errors.songImage}</p>}
+      {errors && errors.songImage && (
+        <p className="div-error">{errors.songImage}</p>
+      )}
 
       <div className="input-div labels-div-input">
         <input
@@ -150,7 +150,9 @@ const UpdateSong = () => {
           onChange={(e) => setSongUrl(e.target.files[0])}
         />
       </div>
-      {errors.songUrl && <p className="div-error">{errors.songUrl}</p>}
+      {errors && errors.songUrl && (
+        <p className="div-error">{errors.songUrl}</p>
+      )}
 
       <button className="edit-submit-button" type="submit" disabled={loading}>
         Update Song
@@ -161,14 +163,6 @@ const UpdateSong = () => {
     </form>
   );
 };
-
-
-
-
-
-
-
-
 
 
 export default UpdateSong;

@@ -75,6 +75,7 @@ export const setCurrentSong = (song) => {
 
 
 
+
 // Thunks
 
 // Get all Songs
@@ -131,15 +132,15 @@ export const createNewSongThunk = (songUpload) => async (dispatch) => {
             body: songUpload
         }
         const response = await fetch(`/api/songs/upload`, options);
-        // console.log("response&&&&&&&&&&", response)
 
-        if (response.ok) {
-            const data = await response.json();
-            dispatch(createNewSong(data));
-            return data;
-        } else {
-            throw response;
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Failed to upload song');e
         }
+
+        const data = await response.json();
+        dispatch(createNewSong(data));
+        // return data;
     } catch (e) {
         return e;
     }
@@ -245,11 +246,15 @@ const songsReducer = (state = initialState, action) => {
             newState.byId[action.payload.id] = action.payload
             return newState;
         }
-         case CREATE_NEW_SONG: {
+        case CREATE_NEW_SONG: {
             newState.songs_arr.push(action.payload);
             newState.byId[action.payload.id] = action.payload
 
             return newState;
+        }
+        case `${CREATE_NEW_SONG}_ERROR`: {
+        console.error("Error creating song:", action.payload);
+        return state;
         }
         case DELETE_SONG: {
             const newById = {...newState.byId};
@@ -274,43 +279,24 @@ const songsReducer = (state = initialState, action) => {
             newState.byId = newById
             return newState;
         }
-        // case UPDATE_SONG:{
-        //     const newArr = [...newState.songs_arr];
-        //     const newUpdatedId = {...newState.byId};
-        //     for(let i = 0; i < newState.songs_arr.length; i++){
-        //         let currSong = newArr[i];
-        //         if(currSong.id === action.payload.id){
-        //             newArr[i] = action.payload;
-        //             break;
-        //         }
-        //     }
-        //     newState.songs_arr = newArr;
+        case UPDATE_SONG:{
+            const newArr = [...newState.songs_arr];
+            const newUpdatedId = {...newState.byId};
+            for(let i = 0; i < newState.songs_arr.length; i++){
+                let currSong = newArr[i];
+                if(currSong.id === action.payload.id){
+                    newArr[i] = action.payload;
+                    break;
+                }
+            }
+            newState.songs_arr = newArr;
 
-        //     newUpdatedId[action.payload.id] = action.payload;
-        //     newState.byId = newUpdatedId
-        //     return newState;
-        // }
-        case UPDATE_SONG: {
-      const index = newState.songs_arr.findIndex(
-        (song) => song.id === action.payload.id
-      );
-      newState.songs_arr[index] = action.payload;
-      newState.byId[action.payload.id] = action.payload;
-      return newState;
-    }
-        case SET_CURRENT_SONG:{
-            return {...newState, currentSong: action.payload}
+            newUpdatedId[action.payload.id] = action.payload;
+            newState.byId = newUpdatedId
+            return newState;
         }
 
-
-
-
-
-
-
-
-
-    default:
+        default:
         return state;
 
     }

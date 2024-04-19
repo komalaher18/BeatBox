@@ -25,7 +25,7 @@ const CreateNewSong = () => {
 
     useEffect(() => {
       if (!user) {
-       navigate("/login");
+        navigate("/login");
       }
       setIsMounted(true);
       return () => setIsMounted(false);
@@ -42,8 +42,8 @@ const CreateNewSong = () => {
       if (!songImage && !songImage.match(/\.(jpeg|jpg|gif|png)$/))
         form_errors.songImage = "Image URL must end in .png, .jpg, or .jpeg";
 
-        // if (!songFile)
-        //   form_errors.songFile = "Please include a song file";
+        if (!songFile)
+          form_errors.songFile = "Please include a song file";
 
 
       if (Object.keys(form_errors).length > 0) {
@@ -52,6 +52,14 @@ const CreateNewSong = () => {
       }
 
       const formData = new FormData();
+
+      if (!songFile) {
+        form_errors.songFile = "Please include a song file";
+        setErrors(form_errors);
+        return;
+      } else {
+        formData.append("songUrl", songFile);
+      }
       formData.append("songUrl", songFile);
       formData.append("title", title);
       formData.append("genre", genre);
@@ -60,24 +68,19 @@ const CreateNewSong = () => {
     //   console.log("FormData:^^^^^", formData);
 
     if (isMounted) setLoading(true);
-    // setLoading(true);
+
 
       try {
         const result = await dispatch(createNewSongThunk(formData));
         // console.log("Response:", result);
-        if (result.ok) {
-            navigate("/songs/current/");
-        } else {
-          return result.data;
-        }
+        // console.log("Song created successfully, navigating...");
+        navigate("/songs/current/");
       } catch (error) {
-        console.error("An error occurred", error);
+        console.error("Error creating song:", error);
       }
       setLoading(false);
+
     };
-
-
-
 
     return (
       <form className="create-song-form" onSubmit={handleSubmit}>
@@ -143,7 +146,7 @@ const CreateNewSong = () => {
           Upload Song
         </button>
         {loading && <p>Loading...</p>}
-       
+
       </form>
     );
 };
