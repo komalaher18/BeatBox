@@ -3,6 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width:500px;
+    height:200px
 }
 
 .delete-song-modal {
@@ -22,10 +24,11 @@
 .no-button {
     background-color: #433e3c;
     border: 1px solid #666;
-    width: 65px;
+    width: 85px;
 }
 
 .yes-button {
     background-color: #ff5500;
-    width: 120px;
+    width: 200px;
+
 }

@@ -15,7 +15,7 @@ function DeleteSongModal({ song }) {
   const handleDelete = async () => {
     await dispatch(deleteSongThunk(song.id));
     closeModal();
-    navigate("/songs"); // Navigate to the songs page after deletion
+    navigate("/songs"); 
   };
 
   return (
@@ -35,7 +35,7 @@ function DeleteSongModal({ song }) {
         <button
           className="yes-button"
           onClick={handleDelete}
-          
+
         >
           Yes (Delete Song)
         </button>

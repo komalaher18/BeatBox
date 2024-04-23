@@ -6,11 +6,10 @@ import "./ManageSongs.css";
 import { useNavigate } from "react-router-dom";
 
 const ManageSongs = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.session.user);
   const currentSongs = useSelector((state) => state.songsReducer.songs_arr);
-
 
   useEffect(() => {
     const getCurrentUserSongs = async () => {
@@ -23,9 +22,21 @@ const ManageSongs = () => {
     return <h2>Please log in to view your songs !!</h2>;
   }
 
+
+  // Group songs by genre
+  const groupedSongs = currentSongs.reduce((acc, song) => {
+    if (!acc[song.genre]) {
+      acc[song.genre] = [];
+    }
+    acc[song.genre].push(song);
+    return acc;
+  }, {});
+
   return (
     <div style={{ padding: "30px" }}>
-      <AllGenres genre="My Songs" songs={currentSongs} />
+      {Object.entries(groupedSongs).map(([genre, songs]) => (
+        <AllGenres key={genre} genre={genre} songs={songs} />
+      ))}
     </div>
   );
 };

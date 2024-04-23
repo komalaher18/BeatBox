@@ -1,10 +1,13 @@
 
 .genre-songs {
     display: grid;
-    grid: auto / repeat(auto-fill, 210px);
-    grid-gap: 80px;
+    grid: auto / repeat(auto-fill, 240px);
+    grid-gap: 60px;
     max-width: 1600px;
+    margin-left: 500px
 }
+
+
 .genre-container {
     padding: 10px 0;
     /* border-bottom: 5px solid #f2f2f2; */

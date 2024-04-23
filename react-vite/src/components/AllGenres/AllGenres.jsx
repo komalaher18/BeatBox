@@ -5,7 +5,16 @@ import SongInfo from "../SongInfo/songInfo"
 const AllGenres = ({ genre, songs }) => {
   return (
     <div className="genre-container">
-      <h2 className="header-genre">{genre}</h2>
+      <h2
+        style={{
+          color: "black",
+          marginLeft: "400px",
+          textDecoration: "underline",
+        }}
+        className="header-genre"
+      >
+        {genre}
+      </h2>
       <div className="genre-songs">
         {songs.map((song) => (
           <SongInfo

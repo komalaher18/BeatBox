@@ -129,32 +129,32 @@ function Navigation() {
                   Upload Song
                 </NavLink>
 
-                <NavLink
+                {/* <NavLink
                   style={{ paddingLeft: "10em" }}
                   className="nav-links"
                   to="/favorites"
                 >
                   my Favorites
-                </NavLink>
+                </NavLink> */}
               </div>
             ) : (
               // : null}
               <>
-                {/* <NavLink
+                <NavLink
                   style={{ paddingLeft: "50em" }}
                   className="nav-links"
                   to="/about/"
                 >
                   About
-                </NavLink> */}
-                {/* <NavLink
+                </NavLink>
+                <NavLink
                   style={{ paddingLeft: "20em" }}
                   className="nav-links"
                   to="/songs/"
                 >
                   Songs
-                </NavLink> */}
-                {!sessionUser && (
+                </NavLink>
+                {/* {!sessionUser && (
                   <div className="nav-signIn-signUp-div">
                     <OpenModalButton
                       buttonText="Log In"
@@ -167,21 +167,21 @@ function Navigation() {
                       className="nav-sign-in-up-btn nav-sign-up-btn"
                     />
                   </div>
-                )}
+                )} */}
               </>
             )}
           </div>
         </nav>
 
-        {/* <div>
+        <div>
           <div className="nav-footer">
             <div>
               <h3 className="footer-text">
-                BeatBox : "Sharing Sounds, Shaping Vibes"
+                BeatBox : "Sharing Sounds, Sharing Vibes"
               </h3>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

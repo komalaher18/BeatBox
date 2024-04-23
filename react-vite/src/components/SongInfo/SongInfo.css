@@ -10,6 +10,7 @@
     width: 250px;
     height: 250px;
     background-color: rgb(237, 237, 237);
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 1.5), 0 16px 20px 0 rgba(0, 0, 0, 0.29);
 }
 
 
@@ -35,6 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px, solid, black
 
 
 }

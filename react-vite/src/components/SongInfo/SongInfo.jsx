@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setCurrentSong } from "../../redux/songs";
-import DeleteSongModal from "../Songs/DeleteSongModal/DeleteSongModal";
 import "./SongInfo.css";
+import DeleteSongModal from "../Songs/DeleteSongModal/DeleteSongModal";
+import { currentSongPlay } from "../../redux/songs";
 import OpenModalButton from "../OpenModalButton";
 
   const SongInfo = ({ id, title, genre, songUrl, songImage, userId }) => {
@@ -28,6 +28,13 @@ import OpenModalButton from "../OpenModalButton";
       navigate(`/songs/${id}/update`, { state: { song: song } });
     };
 
+    const playSong = (e) => {
+      e.stopPropagation();
+      // console.log("Play button clicked");
+      // console.log("Dispatching currentSong:", song);
+      dispatch(currentSongPlay(song));
+    };
+
     const stopProp = (e) => {
       e.stopPropagation();
     };
@@ -46,14 +53,26 @@ import OpenModalButton from "../OpenModalButton";
             alt={`${title} cover art`}
             className="song-image"
           />
+          <div style={{ display: "flex", justifyContent: "center"}}>
+            <button className="song-box-play-btn" onClick={playSong}>
+              <i
+                className="fas fa-play"
+                style={{ color: "#ff5500", fontSize: "24px" }}
+              />
+            </button>
+          </div>
         </div>
         <div className="songinfo-buttons-container">
           {isOwner && (
             <>
+              {/* <div>
+                <button className="song-box-play-btn" onClick={playSong}>
+                  <i className="fas fa-play" style={{ color: "#ff5500" }} />
+                </button>
+              </div> */}
               <button
                 className="div-buttons"
                 onClick={(e) => EditSongPage(e, id)}
-                // onClick={()=> navigate(`/songs/${song.id}/update`)}
                 type="button"
               >
                 <i className="fas fa-edit"></i>

@@ -20,7 +20,7 @@ function AboutPage() {
           {" "}
           <span style={{ fontWeight: "bold" }}> "SoundCloud". </span>
           <p>
-            "Sharing Sounds, Shaping Vibes" This tagline conveys the idea of
+            "Sharing Sounds, Sharing Vibes" This tagline conveys the idea of
             users not only sharing their music but also influencing the
             atmosphere and mood through their contributions.
           </p>
@@ -30,7 +30,8 @@ function AboutPage() {
         <h3 style={{ paddingBottom: "0px", marginBottom: "0px" }}>Songs</h3>
         <ul style={{ paddingTop: "3px", marginTop: "3px" }}>
           <li>Any user can view all the songs uploaded on the website.</li>
-          <li>BeatBox user can like/unlike any number of songs.</li>
+          <li>Any user can play the song.</li>
+          <li>Any user can view details of the song</li>
           <br></br>
         </ul>
         <h3 style={{ paddingBottom: "0px", marginBottom: "0px" }}>Manage</h3>

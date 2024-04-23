@@ -56,7 +56,7 @@ const AllSongs = () => {
     <div className="get-all-songs-main-div">
       {Object.entries(genreSongsMap).map(([genre, songs]) => (
         <div key={genre}>
-          <h2 style={{color:"black"}}>{genre}</h2>
+          <h2 style={{color:"black", marginLeft:"400px", textDecoration:"underline"}}>{genre}</h2>
           <AllGenres songs={songs} />
         </div>
       ))}

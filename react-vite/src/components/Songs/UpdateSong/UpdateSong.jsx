@@ -121,7 +121,7 @@ const UpdateSong = () => {
           <option value={POP}>Pop</option>
           <option value={EDM}>EDM</option>
           <option value={ROCK}>Rock</option>
-
+          <option value={OTHER}>Other</option>
         </select>
       </div>
       {errors && errors.genre && <p className="div-error">{errors.genre}</p>}

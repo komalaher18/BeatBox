@@ -11,7 +11,7 @@ import UpdateSong from '../components/Songs/UpdateSong/UpdateSong';
 import CreateNewComment from '../components/Comments/CreateNewComment/CreateNewComment';
 import EditComment from '../components/Comments/EditComment/EditCommentModal';
 import NotFound from '../components/NotFound/NotFound';
-
+import PlaySong from '../components/Songs/PlaySong/PlaySong';
 
 
 
@@ -71,9 +71,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <NotFound />,
+        element: (
+          <>
+            <NotFound />
+            <PlaySong />
+          </>
+        ),
       },
     ],
   },
-
 ]);

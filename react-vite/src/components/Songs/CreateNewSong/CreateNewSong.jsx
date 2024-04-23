@@ -86,7 +86,7 @@ const CreateNewSong = () => {
       <form className="create-song-form" onSubmit={handleSubmit}>
         <div className="div-input">
           <label className="label-div" htmlFor="title">
-            Title
+            Title :
           </label>
           <input
             className="input-text"
@@ -101,7 +101,7 @@ const CreateNewSong = () => {
 
         <div className="div-input">
           <label className="label-div" htmlFor="genre">
-            Genre
+            Genre :
           </label>
           <select
             className="select-div"
@@ -114,13 +114,14 @@ const CreateNewSong = () => {
             <option value={POP}>Pop</option>
             <option value={EDM}>EDM</option>
             <option value={ROCK}>Rock</option>
+            <option value={OTHER}>Other</option>
           </select>
         </div>
         {errors.genre && <p className="div-error">{errors.genre}</p>}
 
         <div className="div-input">
           <label className="label-div" htmlFor="image">
-            Song Cover Image
+            Song Cover Image :
           </label>
           <input
             className="input-text"
@@ -143,10 +144,9 @@ const CreateNewSong = () => {
         {errors.songFile && <p className="div-error">{errors.songFile}</p>}
 
         <button className="submit-button" type="submit" disabled={loading}>
-          Upload Song
+          Upload Song 
         </button>
         {loading && <p>Loading...</p>}
-
       </form>
     );
 };

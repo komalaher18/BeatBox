@@ -18,6 +18,7 @@ const DetailedSong = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+  // console.log("Song ID from route parameters:", id);
   const songId = parseInt(id);
   const song = useSelector((state) => state.songsReducer.byId[songId]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -67,7 +68,6 @@ const DetailedSong = () => {
                   position: "absolute",
                   left: "-20px",
                   top: "50%",
-                  transform: "translateY(-50%)",
                 }}
               >
                 •
@@ -84,7 +84,7 @@ const DetailedSong = () => {
         </div>
 
         <div className="detailSong-data">
-          {sessionUser.id === song.sessionUser && (
+          {sessionUser === song.sessionUser && (
             <span className="song-info-edit">
               <button onClick={(e) => EditSongPage(e, song.id)}>
                 Update song
@@ -92,23 +92,9 @@ const DetailedSong = () => {
             </span>
           )}
         </div>
-        {sessionUser ? (
-          <div className="sdetailSong-data">
 
-            {/* {sessionUser.id === song.userId && (
-              <span className="song-info-edit">
-                <button onClick={(e) => EditSongPage(e, song.id)}>
-                  Update song
-                </button>
-              </span>
-            )} */}
-          </div>
-        ) : (
-          <div className="no-user"></div>
-        )}
       </div>
       <div>
-        {/* <h2 style={{ paddingLeft: "1rem" }}>Comments</h2> */}
         <div>
           {allComments.length === 1 && (
             <span className="">
@@ -191,7 +177,6 @@ const DetailedSong = () => {
                       }
                     />
                   </div>
-                  {/* <span style={{ marginLeft: "10px" }}> */}
                   <div style={{ display: "inline-block", marginLeft: "10px" }}>
                     <OpenModalButton
                       buttonText={

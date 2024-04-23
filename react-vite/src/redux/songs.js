@@ -2,12 +2,11 @@
 const GET_ALL_SONGS = "songs/GET_ALL_SONGS";
 const GET_DETAILED_SONG = "songs/GET_DETAILED_SONG";
 const CREATE_NEW_SONG = "songs/CREATE_NEW_SONG";
-const GET_CURRENT_USER_SONGS = "songs/GET_CURRENT_USER_SONGS";
+const CURRENT_USER_SONGS = "songs/CURRENT_USER_SONGS";
 const UPDATE_SONG = "songs/UPDATE_SONG";
 const DELETE_SONG = "songs/DELETE_SONG";
-const SET_CURRENT_SONG = "SET_CURRENT_SONG";
+const CURRENT_SONG = "CURRENT_SONG";
 const CURRENT_USER_SONGS_AVAILABLE = "songs/CURRENT_USER_SONGS_AVAILABLE";
-const CURRENT_USER_SONGS = "songs/CURRENT_USER_SONGS";
 
 
 
@@ -32,26 +31,10 @@ const createNewSong = (song) => {
         payload: song,
     }
 };
-
-const deleteSong = (songId) => {
-    return {
-        type: DELETE_SONG,
-        payload: songId,
-    }
-};
-
-
-
 const currentUserSongs = (songs) => {
   return {
     type: CURRENT_USER_SONGS,
     payload: songs,
-  };
-};
-
-export const currentUserSongsAvailable = () => {
-  return {
-    type: CURRENT_USER_SONGS_AVAILABLE,
   };
 };
 
@@ -62,18 +45,26 @@ const updateSong = (songId) => {
     }
 }
 
+const deleteSong = (songId) => {
+    return {
+        type: DELETE_SONG,
+        payload: songId,
+    }
+};
 
-export const setCurrentSong = (song) => {
-  return {
-    type: SET_CURRENT_SONG,
-    payload: song,
-  };
+export const currentSongPlay = (song) => {
+    return {
+        type: CURRENT_SONG,
+        payload: song,
+    };
 };
 
 
-
-
-
+export const currentUserSongsAvailable = () => {
+  return {
+    type: CURRENT_USER_SONGS_AVAILABLE,
+  };
+};
 
 
 // Thunks
@@ -171,9 +162,6 @@ export const getCurrentUserSongsThunk = () => async (dispatch) => {
 
 // // Update a Song
 export const UpdateSongsThunk = (songId, songUpload) => async(dispatch) => {
-    // console.log("song1234*********", song)
-
-
     try {
         const options = {
             method: 'PUT',
@@ -191,12 +179,6 @@ export const UpdateSongsThunk = (songId, songUpload) => async(dispatch) => {
         return e;
     }
 };
-
-
-
-
-
-
 
 
 // Delete a song by id
@@ -232,7 +214,6 @@ const initialState = {
 
 const songsReducer = (state = initialState, action) => {
     let newState = { ...state };
-    // console.log("newState&&&&&", newState)
 
     switch (action.type){
         case GET_ALL_SONGS: {
@@ -252,20 +233,20 @@ const songsReducer = (state = initialState, action) => {
 
             return newState;
         }
-        case `${CREATE_NEW_SONG}_ERROR`: {
-        console.error("Error creating song:", action.payload);
-        return state;
-        }
+        
         case DELETE_SONG: {
-            const newById = {...newState.byId};
-            delete newById[action.payload];
-            newState.byId = newById
+            const songId = action.payload;
+            const newById = { ...newState.byId };
+            delete newById[songId];
+            newState.byId = newById;
 
-            const newSongs = newState.songs_arr.filter((song) => {
-                return song.id !== action.payload;
-            })
-
+            const newSongs = newState.songs_arr.filter((song) => song.id !== songId);
             newState.songs_arr = newSongs;
+
+            if (newState.currentSong.id === songId) {
+                newState.currentSong = {};
+            }
+
             return newState;
         }
         case CURRENT_USER_SONGS: {
@@ -279,6 +260,11 @@ const songsReducer = (state = initialState, action) => {
             newState.byId = newById
             return newState;
         }
+        case CURRENT_SONG: {
+            newState.currentSong = action.payload;
+            return newState;
+        };
+
         case UPDATE_SONG:{
             const newArr = [...newState.songs_arr];
             const newUpdatedId = {...newState.byId};
