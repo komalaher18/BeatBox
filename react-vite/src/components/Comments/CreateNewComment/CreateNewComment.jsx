@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./createNewComment.css";
+import "./CreateNewComment.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { add_comment_thunk } from "../../../redux/comments";
