@@ -1,6 +1,6 @@
-// import SongInfo from "../SongInfo";
 import "./AllGenres.css";
-import SongInfo from "../SongInfo/songInfo"
+import SongInfo from "../SongInfo/SongInfo";
+
 
 const AllGenres = ({ genre, songs }) => {
   return (
