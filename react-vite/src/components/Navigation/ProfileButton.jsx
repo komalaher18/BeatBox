@@ -5,15 +5,19 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { currentUserSongsAvailable } from "../../redux/songs";
+import { useNavigate } from "react-router-dom";
+
 
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
+  const navigate = useNavigate();
 
   const toggleMenu = (e) => {
-    e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+    e.stopPropagation();
     setShowMenu(!showMenu);
   };
 
@@ -33,11 +37,15 @@ function ProfileButton() {
 
   const closeMenu = () => setShowMenu(false);
 
-  const logout = (e) => {
+  const logout = async(e) => {
     e.preventDefault();
-    dispatch(thunkLogout());
-    closeMenu();
+    await dispatch(thunkLogout())
+    .then(() => {
+      dispatch(currentUserSongsAvailable());
+      navigate("/");
+    });
   };
+
 
   return (
     <>
@@ -51,7 +59,7 @@ function ProfileButton() {
               <li>{user.username}</li>
               <li>{user.email}</li>
               <li>
-                <button onClick={logout}>Log Out</button>
+                <button onClick={logout} >Log Out</button>
               </li>
             </>
           ) : (
@@ -72,6 +80,10 @@ function ProfileButton() {
       )}
     </>
   );
+
+
+
+
 }
 
 export default ProfileButton;

@@ -7,10 +7,12 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+   const [firstname, setFirstname] = useState("");
+   const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Navigate to="/" replace={true} />;
@@ -18,12 +20,12 @@ function SignupFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
-      });
-    }
+    // if (password !== confirmPassword) {
+    //   return setErrors({
+    //     confirmPassword:
+    //       "Confirm Password field must be the same as the Password field",
+    //   });
+    // }
 
     const serverResponse = await dispatch(
       thunkSignup({
@@ -42,40 +44,62 @@ function SignupFormPage() {
 
   return (
     <>
-      <h1>Sign Up</h1>
-      {errors.server && <p>{errors.server}</p>}
+      <i className="fa-solid fa-music"></i>
+      <h1>Sign Up for BeatBox</h1>
+      {errors.server && <p className="error-message">{errors.server}</p>}
       <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        {errors.username && <p>{errors.username}</p>}
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <label>
+        <input
+          placeholder="First name"
+          type="text"
+          value={firstname}
+          onChange={(e) => setFirstname(e.target.value)}
+          required
+        />
+
+        {errors.firstname && (
+          <p className="error-message">{errors.firstname}</p>
+        )}
+        <input
+          placeholder="Last name"
+          type="text"
+          value={lastname}
+          onChange={(e) => setLastname(e.target.value)}
+          required
+        />
+
+        {errors.lastname && <p className="error-message">{errors.lastname}</p>}
+
+        <input
+          placeholder="Email address"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
+        {errors.email && <p className="error-message">{errors.email}</p>}
+        {/* <label>
+          Username */}
+        <input
+          type="text"
+          placeholder="Usename"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        {/* </label> */}
+        {errors.username && <p className="error-message">{errors.username}</p>}
+
+        <input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        {errors.password && <p className="error-message">{errors.password}</p>}
+        {/* <label>
           Confirm Password
           <input
             type="password"
@@ -84,7 +108,7 @@ function SignupFormPage() {
             required
           />
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        {errors.confirmPassword && <p>{errors.confirmPassword}</p>} */}
         <button type="submit">Sign Up</button>
       </form>
     </>
