@@ -1,4 +1,4 @@
-import "./EditcommentModal.css";
+import "./EditCommentModal.css";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { edit_comment_thunk } from "../../../redux/comments";
