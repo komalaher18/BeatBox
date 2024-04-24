@@ -21,7 +21,7 @@ def seed_playlists():
 # it will reset the primary keys for you as well.
 def undo_playlists():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.playlists RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM comments"))
 

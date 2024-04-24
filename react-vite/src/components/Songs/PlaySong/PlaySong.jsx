@@ -32,9 +32,7 @@ const PlaySong = () => {
     audio.play().catch((err) => {
       console.error("Playback error:", err);
         // Log additional information about the error
-      console.log("Error code:", err.code);
-      console.log("Error message:", err.message);
-      console.log("Error name:", err.name);
+     
     });
 
     const updateCurrentTime = () => setCurrentTime(audio.currentTime);
