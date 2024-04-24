@@ -94,7 +94,7 @@ def new_song():
 
 
 
-# latest
+# update song
 @songs_routes.route("/<int:songId>", methods=["PUT"])
 @login_required
 def update_song(songId):

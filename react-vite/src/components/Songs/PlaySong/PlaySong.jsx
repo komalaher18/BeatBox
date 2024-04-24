@@ -28,11 +28,10 @@ const PlaySong = () => {
 
     audio.src = currentSong.songUrl;
     console.log("Current song URL:", currentSong.songUrl);
-    // audio.play().catch((err) => console.error("Playback error:", err));
+
     audio.play().catch((err) => {
       console.error("Playback error:", err);
-        // Log additional information about the error
-     
+
     });
 
     const updateCurrentTime = () => setCurrentTime(audio.currentTime);
@@ -46,6 +45,8 @@ const PlaySong = () => {
       audio.removeEventListener("loadedmetadata", updateDuration);
     };
   }, [currentSong]);
+
+
 
   const togglePlay = () => {
     const audio = songPlayer.current;
