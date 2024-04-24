@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { useParams } from "react-router-dom";
-import "./DeletecommentModal.css";
+import "./DeleteCommentModal.css";
 import { delete_comment_thunk } from "../../../redux/comments";
 
 const DeleteComment = (props) => {
