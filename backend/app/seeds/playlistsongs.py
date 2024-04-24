@@ -67,6 +67,6 @@ def undo_playlistsongs():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.playlistsongs RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM comments"))
+        db.session.execute(text("DELETE FROM playlistsongs"))
 
     db.session.commit()
