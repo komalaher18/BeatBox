@@ -49,7 +49,7 @@ ENV S3_SECRET=${S3_SECRET}
 ARG DATABASE_URL
 ENV DATABASE_URL=${DATABASE_URL}
 
-ARG SCHEMA=beatbox
+ARG SCHEMA=beatbox_schema
 ENV SCHEMA=${SCHEMA}
 
 # Copy all the files from your repo to the working directory
