@@ -3,19 +3,19 @@ from sqlalchemy.sql import text
 from .songs import Song
 
 def seed_playlistsongs():
-    song1 = Song(title='Walkman', genre="Hip-hop", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music1.mov", songImage="https://i1.sndcdn.com/artworks-TTc9R3VM8y0aRNf2-pWA79w-t240x240.jpg")
-    song2 = Song(title='Lights', genre="Hip-hop", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music2.mov", songImage="https://i1.sndcdn.com/avatars-3NUCuSaZ69YQaemi-VsuBTQ-t240x240.jpg")
-    song3 = Song(title='JingleBells', genre="Hip-hop", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music3.mov", songImage="https://i1.sndcdn.com/avatars-UShkzO4J2rhdHZJg-k7rawQ-t240x240.jpg")
-    song4 = Song(title='Dark', genre="Hip-hop", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music4.mov", songImage="https://i1.sndcdn.com/artworks-000098273850-taolqs-t500x500.jpg")
-    song5 = Song(title='Clean', genre="Pop", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music1.mov", songImage="https://cdn.wallpapersafari.com/40/70/tR60ij.jpg")
-    song6 = Song(title='Success', genre="Pop", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music2.mov", songImage="https://cdn.wallpapersafari.com/29/99/1P4jUK.jpg")
-    song7 = Song(title='spirit', genre="Pop", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music3.mov", songImage="https://i.pinimg.com/564x/51/0e/8f/510e8f9aa9628536c02ec45561ab5f2d.jpg")
-    song8 = Song(title='Jazzi', genre="edm", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music1.mov", songImage="https://i.pinimg.com/736x/b7/81/e5/b781e5ac39130a4f5233ec8e0895dcc3.jpg")
-    song9 = Song(title='Kind', genre="edm", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music2.mov", songImage="https://i1.sndcdn.com/artworks-50bMWp1EL2rhGIqe-iLOHyQ-t240x240.jpg")
-    song10 = Song(title='Land', genre="edm", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music3.mov", songImage="https://images.pexels.com/photos/1910225/pexels-photo-1910225.jpeg?cs=srgb&dl=pexels-bruno-thethe-1910225.jpg&fm=jpg")
-    song11 = Song(title='Will', genre="Rock", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music1.mov", songImage="https://i0.wp.com/illustrationchronicles.com/wp-content/uploads/2020/10/1_1939_Steinweiss_Imperial-OrchestraUnderRichRodgers_1500.jpg")
-    song12 = Song(title='Season', genre="Rock", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music2.mov", songImage="https://d2rd7etdn93tqb.cloudfront.net/wp-content/uploads/2022/03/spotify-playlist-cover-hands-in-the-air-musical-notes-032322.jpg")
-    song13 = Song(title='Mood', genre="Rock", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/music3.mov", songImage="https://b1709934.smushcdn.com/1709934/wp-content/uploads/2021/07/Copy-of-800-x-500-Blog-Post-4-4.jpg")
+    song1 = Song(title='Walkman', genre="Hip-hop", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/0f2f-d109-4d17-a500-9b3984c7c8f0.mp3", songImage="https://i1.sndcdn.com/artworks-TTc9R3VM8y0aRNf2-pWA79w-t240x240.jpg")
+    song2 = Song(title='Lights', genre="Hip-hop", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/5efa-93ab-4ae2-9267-f1681c317f6e.mp3", songImage="https://i1.sndcdn.com/avatars-3NUCuSaZ69YQaemi-VsuBTQ-t240x240.jpg")
+    song3 = Song(title='JingleBells', genre="Hip-hop", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/acc3-e296-46ae-85e1-877ce355e394.mp3", songImage="https://i1.sndcdn.com/avatars-UShkzO4J2rhdHZJg-k7rawQ-t240x240.jpg")
+    song4 = Song(title='Dark', genre="Hip-hop", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/09ce-6e93-42ed-a98f-700e6a0d4daf.mp3", songImage="https://i1.sndcdn.com/artworks-000098273850-taolqs-t500x500.jpg")
+    song5 = Song(title='Clean', genre="Pop", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/4b84-8102-4102-9fc9-5fa60b9450ba.mp3", songImage="https://cdn.wallpapersafari.com/40/70/tR60ij.jpg")
+    song6 = Song(title='Success', genre="Pop", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/99ce-be1a-451d-9069-4cff7e98324d.mp3", songImage="https://cdn.wallpapersafari.com/29/99/1P4jUK.jpg")
+    song7 = Song(title='Spirit', genre="Pop", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/f3f8-de82-476d-963d-9091dd120bf4.mp3", songImage="https://i.pinimg.com/564x/51/0e/8f/510e8f9aa9628536c02ec45561ab5f2d.jpg")
+    song8 = Song(title='Jazzi', genre="edm", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/7df5-a26d-44ce-9eb4-46da3a9c0ac8.mp3", songImage="https://i.pinimg.com/736x/b7/81/e5/b781e5ac39130a4f5233ec8e0895dcc3.jpg")
+    song9 = Song(title='Kind', genre="edm", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/6149-386e-43bc-9d88-f9e2518fd95c.mp3", songImage="https://i1.sndcdn.com/artworks-50bMWp1EL2rhGIqe-iLOHyQ-t240x240.jpg")
+    song10 = Song(title='Land', genre="edm", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/b36c-0888-49e5-aec7-fbab34b090b7.mp3", songImage="https://images.pexels.com/photos/1910225/pexels-photo-1910225.jpeg?cs=srgb&dl=pexels-bruno-thethe-1910225.jpg&fm=jpg")
+    song11 = Song(title='Will', genre="Rock", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/17f8-ec94-4edf-adcb-769f2cdecd0b.mp3", songImage="https://i0.wp.com/illustrationchronicles.com/wp-content/uploads/2020/10/1_1939_Steinweiss_Imperial-OrchestraUnderRichRodgers_1500.jpg")
+    song12 = Song(title='Season', genre="Rock", userId='1', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/aad1-a885-4f98-97d1-ee546b2e9ac8.mp3", songImage="https://d2rd7etdn93tqb.cloudfront.net/wp-content/uploads/2022/03/spotify-playlist-cover-hands-in-the-air-musical-notes-032322.jpg")
+    song13 = Song(title='Mood', genre="Rock", userId='2', songUrl="https://beatbox-audio.s3.us-east-2.amazonaws.com/f839-fc6b-4da1-8c2b-e4741b622182.mp3", songImage="https://b1709934.smushcdn.com/1709934/wp-content/uploads/2021/07/Copy-of-800-x-500-Blog-Post-4-4.jpg")
 
     db.session.add(song1)
     db.session.add(song2)
@@ -65,8 +65,8 @@ def seed_playlistsongs():
 # it will reset the primary keys for you as well.
 def undo_playlistsongs():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.playlistsongs RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM comments"))
+        db.session.execute(text("DELETE FROM playlistsongs"))
 
     db.session.commit()

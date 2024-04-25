@@ -1,12 +1,15 @@
 """empty message
 
 Revision ID: 89e44e6baf83
-Revises: 
+Revises:
 Create Date: 2024-04-04 17:27:49.195501
 
 """
 from alembic import op
 import sqlalchemy as sa
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
@@ -50,7 +53,7 @@ def upgrade():
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('commentBody', sa.String(length=250), nullable=True),
+    sa.Column('comment', sa.String(length=250), nullable=True),
     sa.Column('songId', sa.Integer(), nullable=True),
     sa.Column('userId', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['songId'], ['songs.id'], ),
@@ -73,6 +76,15 @@ def upgrade():
     sa.PrimaryKeyConstraint('songId', 'playlistId')
     )
     # ### end Alembic commands ###
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE playlistsongs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE playlists SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+
 
 
 def downgrade():

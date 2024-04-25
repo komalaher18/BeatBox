@@ -1,0 +1,106 @@
+ .song-Info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid #1d1717;
+    margin: 5px;
+    width: 250px;
+    height: 250px;
+    background-color: rgb(237, 237, 237);
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 1.5), 0 16px 20px 0 rgba(0, 0, 0, 0.29);
+}
+
+
+.song-Info-container:hover {
+    cursor: pointer;
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 1.5), 0 16px 20px 0 rgba(0, 0, 0, 0.29);
+    transform: scale(0.95);
+}
+
+.songInfo-header {
+    display: flex;
+    height: 50px;
+    width: inherit;
+    align-items:flex-start;
+}
+
+.song-image {
+    background-color: rgb(85, 54, 109);
+    width: 130px;
+    height: 140px;
+    margin-right: 10px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px, solid, black
+
+
+}
+.song-box-image:hover {
+    transform: scale(1.1);
+
+}
+.title-genre-div {
+    max-width: 90px;
+    max-height: 30px
+}
+
+.title-genre-div:hover {
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.title-genre-div h3 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    font-size:25px;
+}
+.title-genre-div h3:hover {
+    transform: scale(1.1);
+
+}
+
+.title-genre-div p {
+    margin: 0;
+    color: #666;
+}
+
+
+.div-genre {
+    display: inline-block;
+    background-color: #9c8a9b;
+    padding: 2px 5px;
+    border-radius: 3px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.song-Info-container:hover  {
+    display: inline;
+}
+
+
+.div-buttons {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 30px;
+    width: 30px;
+   margin-right: 5px;
+}
+
+.songinfo-buttons-container {
+    display: flex;
+    justify-content:flex-end;
+    align-items:flex-end,
+
+}
