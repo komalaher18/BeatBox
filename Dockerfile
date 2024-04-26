@@ -1,79 +1,37 @@
-FROM python:3.9.18-alpine3.18
-
-RUN apk add build-base
-
-RUN apk add postgresql-dev gcc python3-dev musl-dev
-
-ARG FLASK_APP
-ARG FLASK_ENV
-ARG DATABASE_URL
-ARG SCHEMA
-ARG SECRET_KEY
+FROM --platform=amd64 node:18 as frontend
 
 
+WORKDIR /react-vite
+
+COPY ./react-vite/package*.json .
+
+RUN npm install
+
+COPY ./react-vite .
+
+RUN npm run build
+
+
+
+
+# Start with the python:3.9 image
+FROM --platform=amd64 python:3.9
+# FLASK_APP -> entry point to your flask app
 WORKDIR /var/www
 
 
+COPY ./backend ./backend
+COPY --from=frontend /react-vite/dist ./react-vite/dist
+
+
+
 RUN cd backend
-
-# COPY requirements.txt .
-
 RUN pip install -r backend/requirements.txt
-RUN pip install psycopg2
-
-COPY . .
-
-RUN flask db upgrade
-RUN flask seed undo
-RUN flask seed all
-CMD gunicorn app:app
+RUN pip install psycopg2[binary]
 
 
 
-
-
-
-
-
-
-
-
-
-
-# FROM --platform=amd64 node:18 as frontend
-
-
-# WORKDIR /react-vite
-
-# COPY ./react-vite/package*.json .
-
-# RUN npm install
-
-# COPY ./react-vite .
-
-# RUN npm run build
-
-
-
-
-# # Start with the python:3.9 image
-# FROM --platform=amd64 python:3.9
-# # FLASK_APP -> entry point to your flask app
-# WORKDIR /var/www
-
-
-# COPY ./backend ./backend
-# COPY --from=frontend /react-vite/dist ./react-vite/dist
-
-
-
-# RUN cd backend
-# RUN pip install -r backend/requirements.txt
-# RUN pip install psycopg2[binary]
-
-
-
-# RUN cd ..
+RUN cd ..
 # ENV FLASK_APP=app
 # # FLASK_ENV -> Tell flask to use the production server
 # ARG FLASK_ENV=production
@@ -98,27 +56,32 @@ CMD gunicorn app:app
 
 # ARG SCHEMA=beatbox_schema
 # ENV SCHEMA=${SCHEMA}
+ARG FLASK_APP
+ARG FLASK_ENV
+ARG DATABASE_URL
+ARG SCHEMA
+ARG SECRET_KEY
 
-# RUN flask db upgrade
-# RUN flask seed undo
-# RUN flask seed all
-
-
-
-
-
-# # Copy all the files from your repo to the working directory
-# # COPY requirements.txt .
+RUN flask db upgrade
+RUN flask seed undo
+RUN flask seed all
 
 
 
-# #Commenting this in and all the copies above it out works. Why?
-# # COPY . .
 
-# # Start the flask environment by setting our
-# # closing command to gunicorn app:app
-# EXPOSE 8000
 
-# # CMD flask run
+# Copy all the files from your repo to the working directory
+# COPY requirements.txt .
 
-# CMD ["bash", "./backend/start.sh"]
+
+
+#Commenting this in and all the copies above it out works. Why?
+# COPY . .
+
+# Start the flask environment by setting our
+# closing command to gunicorn app:app
+EXPOSE 8000
+
+# CMD flask run
+
+CMD ["bash", "./backend/start.sh"]
