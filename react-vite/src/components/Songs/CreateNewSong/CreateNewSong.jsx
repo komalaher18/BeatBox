@@ -31,19 +31,30 @@ const CreateNewSong = () => {
       return () => setIsMounted(false);
     }, [dispatch, user.id, user, navigate]);
 
+    const handleTitleChange = (e) => {
+      setTitle(e.target.value.trim());
+    };
+
+    const handleSongImageChange = (e) => {
+      setSongImage(e.target.value.trim());
+    };
+
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       const form_errors = {};
-      if (title.length < 1)
-        form_errors.title = "Please include a title for your song";
+      if (!title || title.trim().length === 0)
+        form_errors.title = "Please include a title for  song";
 
       if (!genre) form_errors.genre = "Please select a genre";
+      if (!songImage)
+        form_errors.songImage = "Please include a song cover image";
 
-      if (!songImage && !songImage.match(/\.(jpeg|jpg|gif|png)$/))
+      if (songImage.length > 0 && !songImage.match(/\.(jpeg|jpg|gif|png)$/))
         form_errors.songImage = "Image URL must end in .png, .jpg, or .jpeg";
 
-        if (!songFile)
-          form_errors.songFile = "Please include a song file";
+      if (!songFile)
+        form_errors.songFile = "Please include a song file";
 
 
       if (Object.keys(form_errors).length > 0) {
@@ -72,8 +83,6 @@ const CreateNewSong = () => {
 
       try {
         const result = await dispatch(createNewSongThunk(formData));
-        // console.log("Response:", result);
-        // console.log("Song created successfully, navigating...");
         navigate("/songs/current/");
       } catch (error) {
         console.error("Error creating song:", error);
@@ -81,6 +90,8 @@ const CreateNewSong = () => {
       setLoading(false);
 
     };
+
+
 
     return (
       <form className="create-song-form" onSubmit={handleSubmit}>
@@ -92,7 +103,8 @@ const CreateNewSong = () => {
             className="input-text"
             type="text"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            // onChange={(e) => setTitle(e.target.value)}
+            onChange={handleTitleChange}
             placeholder="Song Title"
             id="title"
           />
@@ -127,7 +139,8 @@ const CreateNewSong = () => {
             className="input-text"
             type="text"
             value={songImage}
-            onChange={(e) => setSongImage(e.target.value)}
+            // onChange={(e) => setSongImage(e.target.value)}
+            onChange={handleSongImageChange}
             placeholder="Image URL"
             id="image"
           />
@@ -144,7 +157,7 @@ const CreateNewSong = () => {
         {errors.songFile && <p className="div-error">{errors.songFile}</p>}
 
         <button className="submit-button" type="submit" disabled={loading}>
-          Upload Song 
+          Upload Song
         </button>
         {loading && <p>Loading...</p>}
       </form>

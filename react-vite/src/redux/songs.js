@@ -171,6 +171,7 @@ export const UpdateSongsThunk = (songId, songUpload) => async(dispatch) => {
         if (response.ok) {
                 const data = await response.json();
                 dispatch(updateSong(data));
+                dispatch(currentSongPlay(data));
                 return data
         } else {
             throw response;
@@ -233,7 +234,7 @@ const songsReducer = (state = initialState, action) => {
 
             return newState;
         }
-        
+
         case DELETE_SONG: {
             const songId = action.payload;
             const newById = { ...newState.byId };
