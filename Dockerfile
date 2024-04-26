@@ -27,8 +27,6 @@ RUN cd backend
 RUN pip install -r backend/requirements.txt
 RUN pip install psycopg2[binary]
 
-RUN flask db upgrade
-RUN flask seed all
 
 RUN cd ..
 ENV FLASK_APP=app
