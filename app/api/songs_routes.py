@@ -64,7 +64,7 @@ def get_song_by_id(id):
 
 
 
-# upload new song
+# # upload new song
 @songs_routes.route('/upload', methods=["POST"])
 @login_required
 def new_song():
@@ -91,6 +91,42 @@ def new_song():
         db.session.commit()
         return new_song.to_dict()
     return form.errors, 400
+
+# @songs_routes.route('/upload', methods=["POST"])
+# @login_required
+# def new_song():
+#     try:
+#         title = request.form.get("title")
+#         genre = request.form.get("genre")
+#         song_image = request.form.get("songImage")
+#         user_id = request.form.get("userId")
+#         song_file = request.files.get("songUrl")
+
+#         if not all([title, genre, song_image, user_id, song_file]):
+#             return jsonify({'error': 'Missing required fields'}), 400
+
+
+#         song_filename = get_unique_filename(song_file.filename)
+#         upload_result = upload_file_to_s3(song_file)
+
+#         if "url" not in upload_result:
+#             return {"error": "The upload was unsuccessful"}, 400
+
+#         song_url = upload_result["url"]
+
+#         new_song = Song(
+#             title=title,
+#             genre=genre,
+#             songImage=song_image,
+#             songUrl=song_url,
+#             userId=user_id
+#         )
+#         db.session.add(new_song)
+#         db.session.commit()
+#         return new_song.to_dict()
+#     except Exception as e:
+#         msg = str(e)
+#         return {"message": msg}, 400
 
 
 
