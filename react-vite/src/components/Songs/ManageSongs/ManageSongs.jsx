@@ -22,7 +22,6 @@ const ManageSongs = () => {
     return <h2>Please log in to view your songs !!</h2>;
   }
 
-
   // Group songs by genre
   const groupedSongs = currentSongs.reduce((acc, song) => {
     if (!acc[song.genre]) {
@@ -32,11 +31,23 @@ const ManageSongs = () => {
     return acc;
   }, {});
 
+  const userHasNoSongs = !currentSongs || currentSongs.length === 0;
+
+
   return (
-    <div style={{ padding: "30px" }}>
-      {Object.entries(groupedSongs).map(([genre, songs]) => (
-        <AllGenres key={genre} genre={genre} songs={songs} />
-      ))}
+    <div className="manage-songs-container">
+      {userHasNoSongs ? (
+        <div className="no-songs-message">
+          <h2>You have no songs uploaded yet!</h2>
+          <button onClick={() => navigate("/songs/new")}>
+            Upload your first song
+          </button>
+        </div>
+      ) : (
+        Object.entries(groupedSongs).map(([genre, songs]) => (
+          <AllGenres key={genre} genre={genre} songs={songs} />
+        ))
+      )}
     </div>
   );
 };
