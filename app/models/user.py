@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_url = db.Column(db.String(1000))
 
-    comments = db.relationship("Comment",cascade="all, delete", back_populates="user")
+    comments = db.relationship("Comment",primaryjoin="User.id == Comment.userId", cascade="all, delete", back_populates="user")
     songs = db.relationship("Song", cascade="all, delete", back_populates="user")
     likes = db.relationship("Like", cascade="all, delete", back_populates="user")
     playlists = db.relationship("Playlist", cascade="all, delete", back_populates='user')
