@@ -1,0 +1,27 @@
+.manage-songs-container {
+    padding: 30px;
+}
+
+.no-songs-message {
+    text-align: center;
+}
+
+.no-songs-message h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.no-songs-message button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.no-songs-message button:hover {
+    background-color: #0056b3;
+}
