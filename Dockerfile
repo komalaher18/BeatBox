@@ -31,7 +31,7 @@ RUN pip install psycopg2[binary]
 
 
 
-RUN cd ..
+# RUN cd ..
 ENV FLASK_APP=app
 # FLASK_ENV -> Tell flask to use the production server
 ARG FLASK_ENV=production
