@@ -11,6 +11,10 @@ COPY ./react-vite .
 
 RUN npm run build
 
+RUN flask db upgrade
+RUN flask seed all
+RUN pip install psycopg2
+
 
 
 # Start with the python:3.9 image
