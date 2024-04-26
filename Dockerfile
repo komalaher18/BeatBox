@@ -77,7 +77,5 @@ ENV SCHEMA=${SCHEMA}
 # # CMD flask run
 
 # CMD ["bash", "./backend/start.sh"]
-RUN flask db upgrade
-RUN flask seed undo
-RUN flask seed all
+
 CMD gunicorn app:app
