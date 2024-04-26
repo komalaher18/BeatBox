@@ -23,9 +23,12 @@ WORKDIR /var/www
 COPY ./backend ./backend
 COPY --from=frontend /react-vite/dist ./react-vite/dist
 
+
+
 RUN cd backend
 RUN pip install -r backend/requirements.txt
 RUN pip install psycopg2[binary]
+
 
 
 RUN cd ..
@@ -53,6 +56,12 @@ ENV DATABASE_URL=${DATABASE_URL}
 
 ARG SCHEMA=beatbox_schema
 ENV SCHEMA=${SCHEMA}
+
+RUN flask db upgrade
+RUN flask seed undo
+RUN flask seed all
+
+
 
 
 
