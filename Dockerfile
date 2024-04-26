@@ -11,9 +11,6 @@ COPY ./react-vite .
 
 RUN npm run build
 
-RUN flask db upgrade
-RUN flask seed all
-RUN pip install psycopg2
 
 
 
@@ -55,6 +52,9 @@ ENV DATABASE_URL=${DATABASE_URL}
 
 ARG SCHEMA=beatbox_schema
 ENV SCHEMA=${SCHEMA}
+
+RUN flask db upgrade
+RUN flask seed all
 
 # Copy all the files from your repo to the working directory
 # COPY requirements.txt .
