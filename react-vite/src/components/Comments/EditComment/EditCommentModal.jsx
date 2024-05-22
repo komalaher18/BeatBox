@@ -68,7 +68,7 @@ const EditComment = (props) => {
                   style={{
                     marginRight: "5px",
                     fontSize: "15px",
-                    backgroundColor: "rgb(84, 132, 213)",
+                    backgroundColor: "orangered",
                     textAlign: "center",
                     padding: "10px",
                     width: "100%",

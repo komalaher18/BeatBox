@@ -6,6 +6,7 @@ import { thunkAuthenticate } from "../redux/session";
 import Navigation from "../components/Navigation/Navigation";
 import PlaySong from "../components/Songs/PlaySong/PlaySong";
 
+
 export default function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

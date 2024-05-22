@@ -9,6 +9,8 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.songs_routes import songs_routes
 from .api.comments_routes import comments_routes
+from .api.playlist_routes import playlist_routes
+from .api.playlistSongs_routes import playlistSongs_routes
 from werkzeug.exceptions import HTTPException
 # from .api.likes_routes import likes_routes
 
@@ -37,7 +39,9 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(songs_routes, url_prefix='/api/songs')
 app.register_blueprint(comments_routes, url_prefix='/api/comments')
 # app.register_blueprint(likes_routes, url_prefix="/api/likes")
-
+# app.register_blueprint(playlist_routes, url_prefix='/api/playlists')
+app.register_blueprint(playlist_routes, url_prefix='/api')
+app.register_blueprint(playlistSongs_routes, url_prefix='/api')
 db.init_app(app)
 Migrate(app, db)
 

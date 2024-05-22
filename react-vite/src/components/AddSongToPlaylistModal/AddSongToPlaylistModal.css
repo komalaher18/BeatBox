@@ -1,0 +1,39 @@
+.add-song-to-playlist-modal {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 600px;
+    height:200px
+}
+
+.add-song-to-playlist-modal h2,
+h3 {
+    margin: 0;
+}
+
+.add-song-to-playlist-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.add-song-to-playlist-form-select {
+    height: 50px;
+    width: 100%;
+}
+
+.add-song-to-playlist-form button {
+    color: white;
+    height: 50px;
+    width: 100px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    font-size: 18px;
+    background-color: green;
+    width: 120px;
+    margin-top: 30px;
+}

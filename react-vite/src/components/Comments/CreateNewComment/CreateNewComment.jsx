@@ -3,7 +3,7 @@ import "./CreateNewComment.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { add_comment_thunk } from "../../../redux/comments";
-// import { get_comments_thunk } from "../../../redux/comments";
+
 
 const CreateNewComment = ({ song }) => {
   const dispatch = useDispatch();

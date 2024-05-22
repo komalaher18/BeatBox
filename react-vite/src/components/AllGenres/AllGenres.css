@@ -2,13 +2,21 @@
 .genre-songs {
     display: grid;
     grid: auto / repeat(auto-fill, 240px);
-    grid-gap: 60px;
+    grid-gap: 53px;
     max-width: 1600px;
-    margin-left: 500px
+    margin-left: 300px
 }
 
 
 .genre-container {
     padding: 10px 0;
-    /* border-bottom: 5px solid #f2f2f2; */
+    background-color: rgb(199, 194, 194);
+
+}
+.genre-songs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-gap: 53px;
+    max-width: auto;
+    margin-left: 300px;
 }

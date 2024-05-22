@@ -3,14 +3,18 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #fff;
+    /* background-color:rgb(53, 49, 49); */
+    background-color: rgb(77, 74, 74);
+
+
     padding: 8px;
     border-radius: 15px;
     border: 1px solid #1d1717;
     margin: 5px;
-    width: 250px;
+    width: 210px;
     height: 250px;
-    background-color: rgb(237, 237, 237);
     box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 1.5), 0 16px 20px 0 rgba(0, 0, 0, 0.29);
+
 }
 
 
@@ -29,14 +33,15 @@
 
 .song-image {
     background-color: rgb(85, 54, 109);
-    width: 130px;
-    height: 140px;
-    margin-right: 10px;
-    margin-left: 50px;
+    width: 180px;
+    height: 150px;
+    margin-right: 5px;
+    margin-left: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px, solid, black
+    border: 1px, solid, black;
+
 
 
 }
@@ -83,10 +88,6 @@
     margin-top: 5px;
 }
 
-.song-Info-container:hover  {
-    display: inline;
-}
-
 
 .div-buttons {
     background-color: white;
@@ -103,4 +104,8 @@
     justify-content:flex-end;
     align-items:flex-end,
 
+}
+
+.image-container{
+    padding:10px
 }

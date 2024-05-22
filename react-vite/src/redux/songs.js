@@ -10,6 +10,7 @@ const CURRENT_USER_SONGS_AVAILABLE = "songs/CURRENT_USER_SONGS_AVAILABLE";
 
 
 
+
 // Action Creators
 const getAllSongs = (songs) => {
     return {
@@ -79,6 +80,7 @@ export const getAllSongsThunk = () => async (dispatch) => {
 
         if (response.ok) {
             const data = await response.json();
+            // console.log("Fetched songs data:", data);
             dispatch(getAllSongs(data));
             return data;
         } else {
@@ -205,7 +207,6 @@ export const deleteSongThunk = (songId) => async (dispatch) => {
 
 
 
-
 // Songs Reducer
 const initialState = {
     songs_arr:[],
@@ -222,8 +223,10 @@ const songsReducer = (state = initialState, action) => {
             action.payload.forEach((song) => {
                 newState.byId[song.id] = song;
             });
+            console.log("Updated state with songs:", newState);
             return newState;
         }
+
         case GET_DETAILED_SONG: {
             newState.byId[action.payload.id] = action.payload
             return newState;
