@@ -9,22 +9,10 @@ const UpdateSong = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log("location.state:", location.state);
-  // console.log("song object:", location.state.song);
-  console.log("song object from location.state:", location.state.song);
-
   const user = useSelector((state) => state.session.user);
-
   const song = location.state.song;
-
-
-  console.log("song object in component state:", song);
-  console.log("title:", song.title);
-  console.log("genre:", song.genre);
-  console.log("song object in component state:", song);
   const [title, setTitle] = useState(song.title);
   const [genre, setGenre] = useState(song.genre );
-;
   const [songImage, setSongImage] = useState("");
   const [songUrl, setSongUrl] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -127,7 +115,7 @@ const UpdateSong = () => {
       {errors && errors.genre && <p className="div-error">{errors.genre}</p>}
 
       <div className="div-input">
-        <label className="label-div" htmlFor="image">
+        <label className="labels-div" htmlFor="image">
           Song Cover Image
         </label>
         <input

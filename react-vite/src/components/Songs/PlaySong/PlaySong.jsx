@@ -9,6 +9,7 @@ import {
   faPause,
   faStepForward,
   faStepBackward,
+  faVolumeHigh,
 } from "@fortawesome/free-solid-svg-icons";
 
 const PlaySong = () => {
@@ -21,6 +22,7 @@ const PlaySong = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const songPlayer = useRef(null);
+  const [volume, setVolume] = useState(1);
 
   useEffect(() => {
     const audio = songPlayer.current;
@@ -80,6 +82,14 @@ const PlaySong = () => {
     songPlayer.current.currentTime = newTime;
   };
 
+    const handleVolumeChange = (e) => {
+      const newVolume = parseFloat(e.target.value);
+      setVolume(newVolume);
+      songPlayer.current.volume = newVolume;
+
+    };
+
+
   const songDetailPage = (e, id) => {
     e.stopPropagation();
     navigate({
@@ -96,7 +106,7 @@ const PlaySong = () => {
   return (
     <div className="play-song-container">
       <audio ref={songPlayer} />
-      <div className= "play-song-buttons">
+      <div className="play-song-buttons">
         <div className="play-next-prev">
           <FontAwesomeIcon
             icon={faStepForward}
@@ -114,13 +124,30 @@ const PlaySong = () => {
             onClick={handlePrev}
           />
         </div>
-        <input
+        <input 
           type="range"
           min={0}
           max={duration}
           value={currentTime}
           onChange={handleTimeChange}
         />
+        <div
+          className="volume-control"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <FontAwesomeIcon
+            icon={faVolumeHigh}
+            style={{ marginRight: "10px" }}
+          />
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={handleVolumeChange}
+          />
+        </div>
         <span className="play-song">
           <p
             onClick={(e) => songDetailPage(e, currentSong.id)}

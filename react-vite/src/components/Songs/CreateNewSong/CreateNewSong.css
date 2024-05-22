@@ -7,9 +7,10 @@
     align-items: center;
     justify-content: space-evenly;
     padding: 0 24px;
-    border: 1px solid #f2f2f2;
+    border:3px solid rgb(31, 30, 30);
     border-radius: 2px;
     box-shadow: 0 2px 12px -5px rgba(0, 0, 0, 0.1);
+
 }
 
 .div-input {
@@ -17,12 +18,14 @@
     align-items: center;
     width: 100%;
     justify-content: center;
+
 }
 
 .label-div {
     display: flex;
     width: 32%;
     font-size: 22px;
+    color: black;
 }
 
 .input-text,
@@ -30,6 +33,7 @@
     margin-left: 10px;
     height: 30px;
     width: 100%;
+    border: 1.5px solid black;
 }
 
 .submit-button {
@@ -38,7 +42,7 @@
     border: none;
     border-radius: 4px;
     font-size: 16px;
-    background-color:blue;
+    background-color:green;
     width: 80%;
 }
 

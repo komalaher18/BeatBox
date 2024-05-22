@@ -1,41 +1,25 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./AllSongs.css";
-// import GenreSongs from "../../GenreSongs";
 import AllGenres from "../../AllGenres/AllGenres";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAllSongsThunk } from "../../../redux/songs";
+import * as playlistActions from "../../../redux/playlists.js";
 
 
 const AllSongs = () => {
-    const songs = useSelector((state) => state.songsReducer.songs_arr);
-    // const songs = Object.values(allSongs);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const currentUser = useSelector((state) => state.session.user);
-    const [loading, setLoading] = useState(true);
+  const songs = useSelector((state) => state.songsReducer.songs_arr);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
-    const HIPHOP = "Hip-hop";
-    const POP = "Pop";
-    const EDM = "edm";
-    const ROCK = "Rock";
-    const OTHER = "other";
+  useEffect(() => {
+    dispatch(getAllSongsThunk()).then(() => setLoading(false));
+    dispatch(playlistActions.getPlaylistsThunk());
+  }, [dispatch]);
 
-    useEffect(() => {
-      const getSongs = async () => {
-        dispatch(getAllSongsThunk());
-        setLoading(false);
-      };
-      getSongs();
-    }, [dispatch]);
-
-    if (!songs) {
-      return <h2>Loading...</h2>;
-    }
-
-    if (!songs || songs.length === 0) {
-      return <h2>Loading...</h2>;
-    }
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
   const genreSongsMap = {};
 
@@ -56,14 +40,28 @@ const AllSongs = () => {
     <div className="get-all-songs-main-div">
       {Object.entries(genreSongsMap).map(([genre, songs]) => (
         <div key={genre}>
-          <h2 style={{color:"black", marginLeft:"400px", textDecoration:"underline"}}>{genre}</h2>
-          <AllGenres songs={songs} />
+          <h2
+            style={{
+              color: "black",
+              marginLeft: "150px",
+              fontSize: "26px",
+              marginTop: "2px",
+              marginBottom: "5px",
+              textDecoration: "underline",
+            }}
+          >
+            {genre}
+          </h2>
+          <AllGenres
+            songs={songs}
+            showAddToPlaylist={true}
+            showRemove={false}
+            showEditDelete={true}
+          />
         </div>
       ))}
     </div>
   );
 };
-
-
 
 export default AllSongs;

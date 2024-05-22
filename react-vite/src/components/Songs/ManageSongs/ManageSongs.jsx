@@ -5,6 +5,7 @@ import { getCurrentUserSongsThunk } from "../../../redux/songs";
 import "./ManageSongs.css";
 import { useNavigate } from "react-router-dom";
 
+
 const ManageSongs = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,7 +46,14 @@ const ManageSongs = () => {
         </div>
       ) : (
         Object.entries(groupedSongs).map(([genre, songs]) => (
-          <AllGenres key={genre} genre={genre} songs={songs} />
+          <AllGenres
+            key={genre}
+            genre={genre}
+            songs={songs}
+            showAddToPlaylist={true}
+            showRemove={false}
+            showEditDelete={true}
+          />
         ))
       )}
     </div>

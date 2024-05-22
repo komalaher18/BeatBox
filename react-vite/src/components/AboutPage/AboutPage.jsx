@@ -2,11 +2,13 @@ import React from "react";
 
 import "./AboutPage.css";
 
+
+
 function AboutPage() {
   return (
-    <div className="about">
+    <div className="about" style={{ marginLeft: "5px", fontSize: "18px" }}>
       <div
-        style={{ paddingLeft: "50em", width: "600px", zIndex: "100" }}
+        style={{ paddingLeft: "510px", width: "600px", zIndex: "100" }}
         className="content"
       >
         <h1
@@ -16,15 +18,14 @@ function AboutPage() {
           Welcome to BeatBox!!!
         </h1>
         <p>
-          BeatBox was developed solely for educational purpose at App Academy,
-          {" "}
+          BeatBox was developed solely for educational purpose at App Academy,{" "}
           <span style={{ fontWeight: "bold" }}> "SoundCloud". </span>
-          <p>
-            "Sharing Sounds, Sharing Vibes" This tagline conveys the idea of
-            users not only sharing their music but also influencing the
-            atmosphere and mood through their contributions.
-          </p>
         </p>
+        <div>
+          "Sharing Sounds, Sharing Vibes" This tagline conveys the idea of users
+          not only sharing their music but also influencing the atmosphere and
+          mood through their contributions.
+        </div>
 
         <h2 style={{ paddingTop: "25px" }}>Features</h2>
         <h3 style={{ paddingBottom: "0px", marginBottom: "0px" }}>Songs</h3>
@@ -32,7 +33,6 @@ function AboutPage() {
           <li>Any user can view all the songs uploaded on the website.</li>
           <li>Any user can play the song.</li>
           <li>Any user can view details of the song</li>
-          <br></br>
         </ul>
         <h3 style={{ paddingBottom: "0px", marginBottom: "0px" }}>Manage</h3>
         <ul style={{ paddingTop: "3px", marginTop: "3px" }}>
@@ -47,7 +47,6 @@ function AboutPage() {
             Beatbox user can update or delete his own comment on a particular
             song.
           </li>
-          <br></br>
         </ul>
       </div>
     </div>
