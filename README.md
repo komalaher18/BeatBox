@@ -4,7 +4,7 @@ BeatBox was developed solely for educational purposes at App Academy, keeping in
 
 
 ## Link to live site  
-https://beatboxkomal.onrender.com	  
+https://beatbox-inqd.onrender.com  
 
 
 
@@ -43,6 +43,14 @@ Users should be able to view all comments on a song.
 Logged-in users should be able to create new comments on a song.  
 Logged-in users should be able to update their comment on a song.  
 Logged-in users should be able to delete their comment from a song.  
+
+#### Playlist  
+Logged-in users can view all their playlists.  
+Logged-in users can create playlists.  
+Logged-in users can add songs to the playlist.  
+Logged-in users can remove songs from the playlist.  
+Logged-in users can delete their playlists.
+
 
 #### Likes.
 Users should be able to view the likes on a song.  
