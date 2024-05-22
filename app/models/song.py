@@ -17,6 +17,7 @@ class Song(db.Model, UserMixin):
     songImage = db.Column(db.String(500), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
+
     user = db.relationship("User", back_populates="songs")
     comments = db.relationship("Comment", cascade="all, delete", back_populates="song")
     likes = db.relationship("Like", cascade="all, delete", back_populates="song")
@@ -35,5 +36,5 @@ class Song(db.Model, UserMixin):
             'songImage':self.songImage,
             # 'likes': self.likes,
             'userId': self.userId,
-            # 'playlists': [playlist.to_dict() for playlist in self.playlists]
+            'playlists': [playlist.to_dict() for playlist in self.playlists]
         }

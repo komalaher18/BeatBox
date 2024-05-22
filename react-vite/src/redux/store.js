@@ -8,13 +8,21 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import songsReducer from "./songs";
 import commentReducer from "./comments";
+import playlistsReducer from "./playlists";
+import playlistSongsReducer from "./playlistSongs";
 
-
+const initialState = {
+  playlists: {}
+};
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   songsReducer,
   comments: commentReducer,
+  // playlists: playlistsReducer,
+  // playlistSongs: playlistSongsReducer
+  playlists: playlistsReducer,
+  playlistSongs: playlistSongsReducer,
 });
 
 let enhancer;
@@ -28,7 +36,10 @@ if (import.meta.env.MODE === "production") {
 }
 
 const configureStore = (preloadedState) => {
-  return createStore(rootReducer, preloadedState, enhancer);
+  // return createStore(rootReducer, preloadedState, enhancer);
+  const store = createStore(rootReducer, preloadedState, enhancer);
+  console.log("Initial Redux State:", store.getState());
+  return store;
 };
 
 export default configureStore;

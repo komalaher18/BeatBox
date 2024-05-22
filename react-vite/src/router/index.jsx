@@ -12,6 +12,13 @@ import CreateNewComment from '../components/Comments/CreateNewComment/CreateNewC
 import EditComment from '../components/Comments/EditComment/EditCommentModal';
 import NotFound from '../components/NotFound/NotFound';
 import PlaySong from '../components/Songs/PlaySong/PlaySong';
+import Playlists from '../components/Playlists/GetPlaylists/GetPlaylists';
+import PlaylistDetails from '../components/Playlists/Playlistdetails/PlayListDetails';
+import CreatePlaylist from '../components/Playlists/CreatePlaylist/CreatePlaylist';
+import AddSongToPL from '../components/Playlists/AddPlaylistSong/AddPlaylistSong';
+
+
+
 
 
 
@@ -69,6 +76,24 @@ export const router = createBrowserRouter([
         path: "/:id/:id/updateComment",
         element: <EditComment />,
       },
+      {
+        path: "/playlists/all",
+        element: <Playlists />,
+      },
+      {
+        path: "/playlists/:playlist_id",
+        element: <PlaylistDetails />,
+      },
+
+      {
+        path: "/playlists/new",
+        element: <CreatePlaylist />,
+      },
+      {
+        path:"/playlists/add-song/:songId",
+        element: <AddSongToPL />,
+      },
+
       {
         path: "*",
         element: (

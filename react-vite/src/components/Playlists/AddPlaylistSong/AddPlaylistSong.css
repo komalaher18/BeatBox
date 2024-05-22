@@ -1,0 +1,21 @@
+.add-song-to-playlist-container {
+    margin: auto;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.button-add-song {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-add-song:hover {
+    background-color: darkgreen;
+}

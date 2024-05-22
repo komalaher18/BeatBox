@@ -1,0 +1,36 @@
+.main-div {
+    padding: 20px;
+    text-align: center;
+}
+
+.delete-playlist-modal {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.yes-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.yes-button:hover {
+    background-color: darkred;
+}
+
+.no-button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.no-button:hover {
+    background-color: darkgrey;
+}
