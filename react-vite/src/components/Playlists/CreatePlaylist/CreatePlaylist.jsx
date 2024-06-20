@@ -89,7 +89,7 @@ const CreatePlaylist = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Playlist Title"
-            className="plInput"
+            className="input-playlist"
           />
         </label>
       </div>
@@ -111,7 +111,11 @@ const CreatePlaylist = () => {
         <p className="error">{errors.playListImageURL}</p>
       )}
 
-      <button type="submit" className="button-create-playlist" disabled={loading}>
+      <button
+        type="submit"
+        className="button-create-playlist"
+        disabled={loading}
+      >
         Create Playlist!
       </button>
       {loading && <p>Loading...</p>}
