@@ -99,9 +99,9 @@ const PlaySong = () => {
     console.log("Navigating to song detail:", id);
   };
 
-  if (!currentSong.songUrl) {
-    return <div>No song selected</div>;
-  }
+  // if (!currentSong.songUrl) {
+  //   return <div>No song selected</div>;
+  // }
 
   return (
     <div className="play-song-container">
@@ -124,7 +124,7 @@ const PlaySong = () => {
             onClick={handlePrev}
           />
         </div>
-        <input 
+        <input
           type="range"
           min={0}
           max={duration}
