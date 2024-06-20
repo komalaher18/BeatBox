@@ -110,7 +110,7 @@ const DetailedSong = () => {
             )}
             {sessionUser && (
               <span
-                style={{ position: "absolute", top: "430px", right: "50px" }}
+                style={{ position: "absolute", top: "120px", right: "210px" }}
               >
                 <OpenModalButton
                   buttonText="Add Song to Playlist"
@@ -197,6 +197,9 @@ const DetailedSong = () => {
                     marginBottom: "3px",
                     fontSize: "20px",
                     paddingBottom: "0.5rem",
+                    //
+                    display: "flex",
+                    alignItems: "center",
                   }}
                 >
                   {/* {comment.userName} : "{comment.comment}" */}
@@ -220,12 +223,13 @@ const DetailedSong = () => {
                   >
                     {comment.userName}
                   </div>
-                  :
+
+                  <div style={{ display: "inline", fontSize: "20px" }}>
+                    : "{comment.comment}"
+                  </div>
                 </div>
 
-                <div style={{ marginLeft: "100px", fontSize: "20px" }}>
-                  "{comment.comment}"
-                </div>
+
 
                 {sessionUser && sessionUser.id == comment.userId && (
                   <div>

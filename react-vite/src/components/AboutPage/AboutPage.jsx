@@ -6,7 +6,7 @@ import "./AboutPage.css";
 
 function AboutPage() {
   return (
-    <div className="about" style={{ marginLeft: "5px", fontSize: "18px" }}>
+    <div className="about" style={{ marginLeft: "200px", fontSize: "18px" }}>
       <div
         style={{ paddingLeft: "510px", width: "600px", zIndex: "100" }}
         className="content"
@@ -33,6 +33,13 @@ function AboutPage() {
           <li>Any user can view all the songs uploaded on the website.</li>
           <li>Any user can play the song.</li>
           <li>Any user can view details of the song</li>
+          <li>Beatbox user can update/delete/add song to their playlist</li>
+        </ul>
+        <h3 style={{ paddingBottom: "0px", marginBottom: "0px" }}>
+          Upload Song
+        </h3>
+        <ul style={{ paddingTop: "3px", marginTop: "3px" }}>
+          <li>Beatbox user can upload the song using form.</li>
         </ul>
         <h3 style={{ paddingBottom: "0px", marginBottom: "0px" }}>Manage</h3>
         <ul style={{ paddingTop: "3px", marginTop: "3px" }}>
@@ -47,6 +54,14 @@ function AboutPage() {
             Beatbox user can update or delete his own comment on a particular
             song.
           </li>
+        </ul>
+        <h3 style={{ paddingBottom: "0px", marginBottom: "0px" }}>
+          My Playlist
+        </h3>
+        <ul style={{ paddingTop: "3px", marginTop: "3px" }}>
+          <li>Beatbox user can view all their own playlists.</li>
+          <li>Beatbox user can view create/delete their own playlists.</li>
+          <li>Beatbox user can move song from one playlistto other playlist.</li>
         </ul>
       </div>
     </div>

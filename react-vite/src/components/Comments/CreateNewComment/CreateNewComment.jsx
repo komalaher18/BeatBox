@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { add_comment_thunk } from "../../../redux/comments";
 
+let commentLength = 10;
 
 const CreateNewComment = ({ song }) => {
   const dispatch = useDispatch();
@@ -21,6 +22,18 @@ const CreateNewComment = ({ song }) => {
   useEffect(() => {
     setErrors({});
   }, [comment1]);
+
+  const handleInputChange = (e) => {
+    const newComment = e.target.value;
+    if (newComment.length <= commentLength) {
+      setComment1(newComment);
+      setErrors({});
+    } else {
+      setErrors({
+        comment: `Comment cannot be longer than ${commentLength} characters`,
+      });
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,9 +56,7 @@ const CreateNewComment = ({ song }) => {
 
   return (
     <div>
-      {errors.comment && (
-        <p className="error-message">{errors.comment}</p>
-      )}
+      {errors.comment && <p className="error-message">{errors.comment}</p>}
 
       <div className="post-a-comment">
         <div className="Heading">
@@ -58,7 +69,8 @@ const CreateNewComment = ({ song }) => {
                 id="input-comment"
                 type="text"
                 value={comment1}
-                onChange={(e) => setComment1(e.target.value)}
+                // onChange={(e) => setComment1(e.target.value)}
+                onChange={handleInputChange}
                 placeholder="Add a comment about this song"
                 rows="10"
                 required

@@ -67,7 +67,8 @@ const PlaylistDetails = () => {
       {playlistSongs.length > 0 ? (
         <div
           className="playlist-songs-container genre-songs"
-          style={{ backgroundColor: "rgb(199, 194, 194)" }}
+          // style={{ backgroundColor: "rgb(199, 194, 194)" }}
+          style={{ backgroundColor: "white" }}
         >
           {playlistSongs.map((plSong, index) => {
             const songId = plSong.songId;

@@ -21,6 +21,7 @@ function ProfileButton() {
     setShowMenu(!showMenu);
   };
 
+
   useEffect(() => {
     if (!showMenu) return;
 
@@ -46,6 +47,8 @@ function ProfileButton() {
     });
   };
 
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
 
   return (
     <>
@@ -53,15 +56,15 @@ function ProfileButton() {
         <FaUserCircle />
       </button>
       {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
+        <ul className={ulClassName} ref={ulRef}>
           {user ? (
-            <>
-              <li>{user.username}</li>
+            <div className="profile-user-details">
+              <li>Hello,{user.username}</li>
               <li>{user.email}</li>
               <li>
-                <button onClick={logout} >Log Out</button>
+                <button style={{backgroundColor:"red", marginTop:"8px", height:"30px", }} onClick={logout}>Log Out</button>
               </li>
-            </>
+            </div>
           ) : (
             <>
               <OpenModalMenuItem
@@ -80,10 +83,6 @@ function ProfileButton() {
       )}
     </>
   );
-
-
-
-
 }
 
 export default ProfileButton;
